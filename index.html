@@ -4,6 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="CSSStyles\normalize.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script src="JavascriptFiles\Valid-Sending.js"></script>
     </head>
 
     <body>
@@ -67,7 +69,7 @@
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
             </select><br>
-            Zip Code: <input type="number" name="zip"><br>
+            Zip Code: <input type="number" name="zip" pattern="[0-9]{5}"><br>
             Country: <select name="country">
                     <option value="US">United States of America</option>
             </select><br>
@@ -75,7 +77,7 @@
 
         <button id="submit" type="button">Submit!</button>
 
-        <script src="JavascriptFiles\Valid-Sending.js"></script>
+       
 
     </body>
 
