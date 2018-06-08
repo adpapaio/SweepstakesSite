@@ -12,11 +12,12 @@
         <h1>ENTER THIS SWEEPSTAKES TO WIN $1*</h1>
 
         <form name="infoForm">
-            First Name: <input type="text" name="fName"><br>
-            Last Name: <input type="text" name="lName"><br>
-            Address 1: <input type="text" name="addressOne"><br>
-            Address 2: <input type="text" name="addressTwo"><br>
-            State: <select name="state">
+            First Name: <input type="text" name="fName" tag="alpha"><br>
+            Last Name: <input type="text" name="lName" tag="alpha"><br>
+            Address 1: <input type="text" name="addressOne" tag="alphaNum"><br>
+            Address 2: <input type="text" name="addressTwo" tag="alphaNum"><br>
+            City: <input type="text" name="city" tag="alpha"><br>
+            State: <select name="state" type="state" tag="alpha">
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -69,8 +70,8 @@
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
             </select><br>
-            Zip Code: <input type="number" name="zip" pattern="[0-9]{5}"><br>
-            Country: <select name="country">
+            Zip Code: <input type="number" name="zip" pattern="[0-9]{5}" tag="zipCode"><br>
+            Country: <select name="country" tag="alpha">
                     <option value="US">United States of America</option>
             </select><br>
         </form>

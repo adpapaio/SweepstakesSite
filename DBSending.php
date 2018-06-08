@@ -13,8 +13,10 @@ if ($conn->connect_error) {
 
 if($_GET['itWorks'] == 'true')
 {
+    $fName = $_GET['fName'];
+    $lName = $_GET['lName'];
     $sql = "INSERT INTO UserInfo (firstName, lastName)
-    VALUES ('John', 'Doe')";
+    VALUES ($fName, $lName)";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
