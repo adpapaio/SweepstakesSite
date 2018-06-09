@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-if($_GET['itWorks'] == 'true')
+if($_GET['validated'] == 'true')
 {
     $fName = $_GET['fName'];
     $lName = $_GET['lName'];
@@ -26,7 +26,7 @@ if($_GET['itWorks'] == 'true')
     VALUES ('$fName', '$lName', '$add1','$add2','$city','$state','$zip','$country', CURRENT_TIMESTAMP())";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        echo "SUCCESS you have signed up for the sweepstakes";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
