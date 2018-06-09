@@ -12,6 +12,12 @@ h1
     padding-bottom: 10px
 }
 
+h2
+{
+    text-align: center;
+    font-size: 125%;
+}
+
 input, select
 {
     width: 100%;
@@ -43,5 +49,11 @@ footer
     position: relative;
     top:40px;
     height:40px;
+}
+
+img 
+{
+    width: 100%;
+    height: auto;
 }
 
