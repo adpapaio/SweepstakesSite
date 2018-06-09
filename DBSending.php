@@ -15,8 +15,15 @@ if($_GET['itWorks'] == 'true')
 {
     $fName = $_GET['fName'];
     $lName = $_GET['lName'];
-    $sql = "INSERT INTO UserInfo (firstName, lastName)
-    VALUES ($fName, $lName)";
+    $add1 = $_GET['add1'];
+    $add2 = $_GET['add2'];
+    $state = $_GET['state'];
+    $city = $_GET['city'];
+    $zip = $_GET['zip'];
+    $country = $_GET['country'];
+
+    $sql = "INSERT INTO UserInfo (firstName, lastName, address1, address2, city, `state`, zip, country, DateEntered)
+    VALUES ('$fName', '$lName', '$add1','$add2','$city','$state','$zip','$country', CURRENT_TIMESTAMP())";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
