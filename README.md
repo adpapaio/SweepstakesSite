@@ -1,7 +1,8 @@
 # SweepstakesSite
 Basic Website that will handle sweepstakes sign up pages. 
 
-Web Hosting Service: 000webhostapp.com
+Web Hosting Service: 000webhost.com
+
 IDE: Visual Studio Code
 
 Created by using:
