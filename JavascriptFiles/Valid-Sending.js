@@ -11,10 +11,10 @@ var zipCode;
 var country;
 
 var FormData; //array that holds all the data
-function formVar(opt)
+function formVar(type,opt)
 {
     this.inputVal;
-    this.valTag;
+    this.valType =type;
     this.optional = opt;
     this.valid = false;
 }
@@ -28,11 +28,25 @@ function Submit()
     {
         if(FormData[i].inputVal.length != 0)
         {
-            FormData[i].valid = true;
+            if(FormData[i].valType == 'alpha')
+            {
+                console.log("Entered alpha");
+                FormData[i].valid = AlphaValidation(FormData[i].inputVal);
+            }
+            else if (FormData[i].valType == 'alphaNum')
+            {
+                console.log("Entered alphaNum");
+                FormData[i].valid = AlphaNumVal(FormData[i].inputVal);
+            }
+            else if (FormData[i].valType == 'zipCode')
+            {
+                console.log("Entered zip");
+                FormData[i].valid = ZipValidation(FormData[i].inputVal);
+            }
         }
         else
         {
-            if(FormData[i].optional)
+            if(FormData[i].optional) //if it was an optional field then it can be blank
             {
                 FormData[i].valid = true;
             }
@@ -41,6 +55,9 @@ function Submit()
                 FormData[i].valid = false;
             }
         }
+
+        console.log(FormData[i].inputVal +": "+ FormData[i].valid);
+        
     }
 
     if(ClientValidation())
@@ -66,15 +83,48 @@ function pullInfo()
     city.inputVal = document.forms["infoForm"]["city"].value;
     zipCode.inputVal = document.forms["infoForm"]["zip"].value;
     country.inputVal = document.forms["infoForm"]["country"].value;
+}
 
-    fName.valTag = document.forms["infoForm"]["fName"].value.tagName;
-    lName.valTag = document.forms["infoForm"]["lName"].value.tagName;
-    address1.valTag = document.forms["infoForm"]["addressOne"].value.tagName;
-    address2.valTag = document.forms["infoForm"]["addressTwo"].value.tagName;
-    state.valTag = document.forms["infoForm"]["state"].value.tagName;
-    city.valTag = document.forms["infoForm"]["city"].value.tagName;
-    zipCode.valTag = document.forms["infoForm"]["zip"].value.tagName;
-    country.valTag = document.forms["infoForm"]["country"].value.tagName;
+function AlphaValidation(input)
+{
+    var alpha = /^[A-Za-z\s]+$/;
+
+    if(alpha.test(input))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function AlphaNumVal(input)
+{
+    var alphaNum = /^[a-z0-9]+$/i;
+
+    if(alphaNum.test(input))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function ZipValidation(input)
+{
+    var zip = /(^\d{5}$)|(^\d{5}-\d{4}$)/; //checks either 5 digit zip or 5+4 digit zip
+
+    if(zip.test(input))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 function ClientValidation()
@@ -125,14 +175,14 @@ function SendInfo(url){
 window.onload = function()
 {
     document.getElementById('submit').addEventListener("click", Submit);
-    fName = new formVar(false);
-    lName = new formVar(false);
-    address1 = new formVar(false);
-    address2 = new formVar(true);
-    city = new formVar(false);
-    state = new formVar(false);
-    zipCode = new formVar(false);
-    country = new formVar(false);
+    fName = new formVar('alpha',false);
+    lName = new formVar('alpha',false);
+    address1 = new formVar('alphaNum',false);
+    address2 = new formVar('alphaNum',true);
+    city = new formVar('alpha',false);
+    state = new formVar('alpha',false);
+    zipCode = new formVar('zipCode',false);
+    country = new formVar('alpha',false);
     
     FormData = [fName,lName,address1,address2,city,state,zipCode,country];
 }
