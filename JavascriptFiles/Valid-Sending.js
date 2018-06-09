@@ -36,6 +36,12 @@ function Submit()
             else if (FormData[i].valType == 'alphaNum') //if it is type alphanum
             {
                 FormData[i].valid = AlphaNumVal(FormData[i].inputVal);
+
+                if(FormData[i].inputVal.indexOf('#')>-1)
+                {
+                    var index = FormData[i].inputVal.indexOf('#');
+                    FormData[i].inputVal = FormData[i].inputVal.substring(0,index) + "B" + FormData[i].inputVal.substring(index+1);
+                }
             }
             else if (FormData[i].valType == 'zipCode') //if it is type zipcode
             {
@@ -110,7 +116,7 @@ function AlphaValidation(input)
 //alpha numeric validation
 function AlphaNumVal(input)
 {
-    var alphaNum = /^[a-z0-9\s]+$/i;
+    var alphaNum = /^[a-z0-9\s\#\.]+$/i;
 
     if(alphaNum.test(input))
     {
