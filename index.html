@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="CSSStyles\normalize.css">
+        <link rel="stylesheet" href="CSSStyles\mainStyle.css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
         <script src="JavascriptFiles\Valid-Sending.js"></script>
     </head>
@@ -11,7 +12,7 @@
     <body>
         <h1>ENTER THIS SWEEPSTAKES TO WIN $1*</h1>
 
-        <form name="infoForm">
+        <form name="infoForm" class="info">
             First Name: <input type="text" name="fName" ><br>
             Last Name: <input type="text" name="lName" ><br>
             Address 1: <input type="text" name="addressOne" ><br>
@@ -76,7 +77,7 @@
             </select><br>
         </form>
 
-        <button id="submit" type="button">Submit!</button>
+        <button id="submit" type="button" class="submitButton">Submit!</button>
 
        
 
